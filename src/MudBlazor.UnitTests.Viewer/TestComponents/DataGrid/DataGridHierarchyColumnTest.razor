@@ -1,8 +1,8 @@
 ﻿@namespace MudBlazor.UnitTests.TestComponents
 
-<MudDataGrid Items="@_items" Filterable="true">
+<MudDataGrid @ref="MudDataGrid" T="Model" Items="@_items" Filterable="true" RowClick="@(x => MudDataGrid.ToggleHierarchyVisibilityAsync(x.Item))">
     <Columns>
-        <HierarchyColumn ButtonDisabledFunc="@(x => x.Name == "Alicia")" />
+        @* <HierarchyColumn ButtonDisabledFunc="@(x => x.Name == "Alicia")" /> *@
         <PropertyColumn Property="x => x.Name" />
         <PropertyColumn Property="x => x.Age" />
         <PropertyColumn Property="x => x.Status" />
@@ -15,6 +15,7 @@
 </MudDataGrid>
 
 @code {
+    private MudDataGrid<Model> MudDataGrid;
     private IEnumerable<Model> _items = new List<Model>()
     {
         new Model("Sam", 56, Severity.Normal), 

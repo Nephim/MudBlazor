@@ -1515,7 +1515,7 @@ namespace MudBlazor
 
         #endregion
 
-        internal async Task ToggleHierarchyVisibilityAsync(T item)
+        public async Task ToggleHierarchyVisibilityAsync(T item)
         {
             if (_openHierarchies.Contains(item))
             {
